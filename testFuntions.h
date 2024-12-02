@@ -17,3 +17,5 @@ typedef enum {
 } SortFuncsEnum;
 
 void test(void (*sortFunc)(double*, int), int n, Order order);
+
+void test(void (*sortFunc)(double*, int, int), int n, Order order);
