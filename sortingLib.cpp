@@ -31,7 +31,7 @@ void insertSort(double * arr, int n) {
 
         while (j >= 0 && arr[j] > key) {
             swap(&arr[j], &arr[j + 1]);
-            j--;
+            --j;
         }
         arr[j + 1] = key;
     }
@@ -44,10 +44,12 @@ void selectionSort(double * arr, int n) {
     for (int i = 0; i != n - 1; ++i) {
         int indexMin = i;
         for (int j = i + 1; j != n; ++j) {
-            if (arr[j] < arr[indexMin]) {
+            if (arr[indexMin] > arr[j]) {
                 indexMin = j;
             }
         }
-        swap(&arr[i],&arr[indexMin]);
+        if (indexMin != i) {
+            swap(&arr[i],&arr[indexMin]);
+        }
     }
 }

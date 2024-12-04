@@ -1,3 +1,4 @@
+#include <complex.h>
 #include <stdio.h>
 
 #include "sortingLib.h"
@@ -14,13 +15,14 @@ void (*arrayFuncs[NumOrder])(double*, int) = {
 };
 
 // массив указателей на функции сортировки
-void (*sortFuncsBIS[NumSortFuncs])(double*, int) = {
+void (*sortFuncs[NumSortFuncs])(double*, int) = {
     bubbleSort,
     insertSort,
-    selectionSort
+    selectionSort,
+    // mergeSortWrapper
 };
 
-void (*sortFuncsMQ[NumSortFuncs])(double*, int, int) = {
+void (*sortFuncsMQ[NumSortFuncsMMQ])(double*, int, int) = {
     mergeSort,
     mergeSortInPlace
 };
@@ -29,27 +31,34 @@ void (*sortFuncsMQ[NumSortFuncs])(double*, int, int) = {
 const char * sortFuncNames[NumSortFuncs] = {
     "Bubble Sort",
     "Insertion Sort",
-    "Selection Sort"
+    "Selection Sort",
+    // "MergeSort"
+};
+
+const char * sortFuncNamesMQ[NumSortFuncsMMQ] = {
+    "Merge Sorting",
+    "Merge Sorting in-place"
 };
 
 int main() {
 
-    int n = 150000;
+    int n = 100000;
 
     printf("array lenght is %d\n", n);
 
-    // for (int i = 0; i < NumSortFuncs; i++) {
-    //     printf("Testing sort function - %s:\n", sortFuncNames[i]);
-    //     for (int j = 0; j < NumOrder; j++) {
-    //         test(sortFuncsBIS[i], n, (Order)j);
-    //     }
-    // }
+    for (int i = 0; i < NumSortFuncs; i++) {
+        printf("Testing sort function - %s:\n", sortFuncNames[i]);
+        for (int j = 0; j < NumOrder; j++) {
+            test(sortFuncs[i], n, (Order)j);
+        }
+    }
 
-    // for (int i = 0; i < NumSortFuncs; i++) {
-    //     printf("Testing sort function - %s:\n", sortFuncNames[i]);
-    //     test(sortFuncs[i], n, Random);
-    // }
-
+    for (int i = 0; i < NumSortFuncsMMQ; i++) {
+        printf("Testing sort function - %s:\n", sortFuncNamesMQ[i]);
+        for (int j = 0; j < NumOrder; j++) {
+            test(sortFuncsMQ[i  ], n, (Order)j);
+        }
+    }
 
     return 0;
 }

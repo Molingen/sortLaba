@@ -14,7 +14,6 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
     switch (order) {
         case Direct: {
             generateDirectArr(arr, n);
-
             const clock_t start = clock();
 
             sortFunc(arr, n);
@@ -28,7 +27,6 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
         }
         case Inverse: {
             generateInverseArr(arr, n);
-
             const clock_t start = clock();
 
             sortFunc(arr, n);
@@ -42,7 +40,6 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
         }
         case Random: {
             generateRandomArr(arr, n);
-
             const clock_t start = clock();
 
             sortFunc(arr, n);

@@ -13,8 +13,15 @@ typedef enum {
     BubbleSort,
     SelectSort,
     InsertSort,
+    // MergeSortWrapper,
     NumSortFuncs
-} SortFuncsEnum;
+} SortFuncsEnum1;
+
+typedef enum {
+    MergeSort,
+    MergeSortInPlace,
+    NumSortFuncsMMQ
+} SortFuncsEnum2;
 
 void test(void (*sortFunc)(double*, int), int n, Order order);
 
