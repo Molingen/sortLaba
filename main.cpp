@@ -7,6 +7,7 @@
 #include "mergeLib.h"
 
 
+
 // массив указателей на функции создания массивов
 void (*arrayFuncs[NumOrder])(double*, int) = {
     generateDirectArr,
@@ -14,7 +15,7 @@ void (*arrayFuncs[NumOrder])(double*, int) = {
     generateRandomArr
 };
 
-// массив указателей на функции сортировки
+// массивы указателей на функции сортировки
 void (*sortFuncs[NumSortFuncs])(double*, int) = {
     bubbleSort,
     insertSort,
@@ -22,22 +23,27 @@ void (*sortFuncs[NumSortFuncs])(double*, int) = {
     // mergeSortWrapper
 };
 
-void (*sortFuncsMQ[NumSortFuncsMMQ])(double*, int, int) = {
+void (*sortFuncsMQ[NumSortFuncsMQ])(double*, int, int) = {
     mergeSort,
-    mergeSortInPlace
+    mergeSortInPlace,
+    quickSortL,
+    quickSortH
 };
 
-// массив строк-названий функций сортировок
+// массивы строк-названий функций сортировок
 const char * sortFuncNames[NumSortFuncs] = {
     "Bubble Sort",
     "Insertion Sort",
     "Selection Sort",
     // "MergeSort"
+    // тут враппер у мержа (с враппером дольше)
 };
 
-const char * sortFuncNamesMQ[NumSortFuncsMMQ] = {
-    "Merge Sorting",
-    "Merge Sorting in-place"
+const char * sortFuncNamesMQ[NumSortFuncsMQ] = {
+    "Merge Sort",
+    "Merge Sort in-place",
+    "Quick Lomuto",
+    "Quick Hoara"
 };
 
 int main() {
@@ -46,19 +52,22 @@ int main() {
 
     printf("array lenght is %d\n", n);
 
-    for (int i = 0; i < NumSortFuncs; i++) {
-        printf("Testing sort function - %s:\n", sortFuncNames[i]);
-        for (int j = 0; j < NumOrder; j++) {
-            test(sortFuncs[i], n, (Order)j);
-        }
-    }
+    // for (int i = 0; i < NumSortFuncs; i++) {
+    //     printf("Testing sort function - %s:\n", sortFuncNames[i]);
+    //     for (int j = 0; j < NumOrder; j++) {
+    //         test(sortFuncs[i], n, static_cast<Order>(j));
+    //     }
+    // }
 
-    for (int i = 0; i < NumSortFuncsMMQ; i++) {
+    for (int i = 0; i < NumSortFuncsMQ; i++) {
         printf("Testing sort function - %s:\n", sortFuncNamesMQ[i]);
         for (int j = 0; j < NumOrder; j++) {
-            test(sortFuncsMQ[i  ], n, (Order)j);
+            test(sortFuncsMQ[i  ], n, static_cast<Order>(j));
         }
     }
 
     return 0;
 }
+
+
+

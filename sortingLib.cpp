@@ -53,3 +53,72 @@ void selectionSort(double * arr, int n) {
         }
     }
 }
+
+
+
+int partitionLomuto(double * arr, int low, int high) {
+    double pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j != high; ++j) {
+        if (arr[j] <= pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+
+    return i + 1;
+}
+
+
+
+void quickSortL(double *arr, int left, int right) {
+    while (left < right) {
+        int q = partitionLomuto(arr, left, right);
+        if (q - left < right - q) {
+            quickSortL(arr, left, q - 1);
+            left = q + 1;
+        }
+        else {
+            quickSortL(arr, q + 1, right);
+            right = q - 1;
+        }
+    }
+}
+
+
+
+int partitionHoare(double * arr, int left, int right) {
+    double pivot = arr[left];
+    int i = left - 1;
+    int j = right + 1;
+
+    while (true) {
+        while (arr[++i] < pivot) {}
+        while (arr[--j] > pivot) {}
+
+        if (i >= j) {
+            return j;
+        }
+
+        swap(&arr[i], &arr[j]);
+    }
+}
+
+
+
+void quickSortH(double *arr, int left, int right) {
+    while (left < right) {
+        int q = partitionHoare(arr, left, right);
+        if (q - left < right - q) {
+            quickSortH(arr, left, q - 1);
+            left = q + 1;
+        }
+        else {
+            quickSortH(arr, q + 1, right);
+            right = q - 1;
+        }
+    }
+}

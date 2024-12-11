@@ -20,7 +20,9 @@ typedef enum {
 typedef enum {
     MergeSort,
     MergeSortInPlace,
-    NumSortFuncsMMQ
+    QuickSortL,
+    QuickSortH,
+    NumSortFuncsMQ
 } SortFuncsEnum2;
 
 void test(void (*sortFunc)(double*, int), int n, Order order);

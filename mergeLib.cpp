@@ -8,10 +8,9 @@ void merge(double * arr, int left, int middle, int right) {
     int leftLength = middle - left + 1;
     int rightLength = right - middle;
 
-    double * leftTmpArray = (double*)malloc(leftLength * sizeof(double));
-    double * rightTmpArray = (double*)malloc(rightLength * sizeof(double));
+    double * leftTmpArray = static_cast<double*>(malloc(leftLength * sizeof(double)));
+    double * rightTmpArray = static_cast<double*>(malloc(rightLength * sizeof(double)));
 
-    // Copy data to leftTmpArray and rightTmpArray
     for (int i = 0; i != leftLength; ++i)
         leftTmpArray[i] = arr[left + i];
 
@@ -21,6 +20,7 @@ void merge(double * arr, int left, int middle, int right) {
     int i = 0;
     int j = 0;
     int k = left;
+
     while (i < leftLength && j < rightLength) {
         if (leftTmpArray[i] <= rightTmpArray[j]) {
             arr[k] = leftTmpArray[i];
@@ -88,11 +88,11 @@ void mergeInPlace(double * arr, int left, int middle, int right) {
             double value = arr[start2];
             int index = start2;
 
-            while (index != left) {
+            while (index > left && arr[index - 1] > value) {
                 arr[index] = arr[index - 1];
                 index--;
             }
-            arr[left] = value;
+            arr[index] = value;
 
             left++;
             middle++;
@@ -114,3 +114,4 @@ void mergeSortInPlace(double * arr, int left, int right) {
         mergeInPlace(arr, left, middle, right);
     }
 }
+

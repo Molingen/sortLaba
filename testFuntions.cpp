@@ -9,7 +9,7 @@
 
 void test(void (*sortFunc)(double*, int), int n, Order order) {
 
-    double* arr = (double*)malloc(n*sizeof(double));
+    double* arr = static_cast<double*>(malloc(n * sizeof(double)));
 
     switch (order) {
         case Direct: {
@@ -58,9 +58,9 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
     free(arr);
 }
 
-void test(void(*sortFunc)(double *, int, int), int n, Order order) {
+void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
-    double* arr = (double*)malloc(n*sizeof(double));
+    double* arr = static_cast<double*>(malloc(n * sizeof(double)));
 
     switch (order) {
         case Direct: {
