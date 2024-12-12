@@ -23,9 +23,7 @@ void bubbleSort(double * arr, int n) {
 
 
 void insertSort(double * arr, int n) {
-
     for (int i = 1; i != n; ++i) {
-
         double key = arr[i];
         int j = i - 1;
 
@@ -40,7 +38,6 @@ void insertSort(double * arr, int n) {
 
 
 void selectionSort(double * arr, int n) {
-
     for (int i = 0; i != n - 1; ++i) {
         int indexMin = i;
         for (int j = i + 1; j != n; ++j) {

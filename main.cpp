@@ -52,12 +52,12 @@ int main() {
 
     printf("array lenght is %d\n", n);
 
-    // for (int i = 0; i < NumSortFuncs; i++) {
-    //     printf("Testing sort function - %s:\n", sortFuncNames[i]);
-    //     for (int j = 0; j < NumOrder; j++) {
-    //         test(sortFuncs[i], n, static_cast<Order>(j));
-    //     }
-    // }
+    for (int i = 0; i < NumSortFuncs; i++) {
+        printf("Testing sort function - %s:\n", sortFuncNames[i]);
+        for (int j = 0; j < NumOrder; j++) {
+            test(sortFuncs[i], n, static_cast<Order>(j));
+        }
+    }
 
     for (int i = 0; i < NumSortFuncsMQ; i++) {
         printf("Testing sort function - %s:\n", sortFuncNamesMQ[i]);

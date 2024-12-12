@@ -24,25 +24,25 @@ void merge(double * arr, int left, int middle, int right) {
     while (i < leftLength && j < rightLength) {
         if (leftTmpArray[i] <= rightTmpArray[j]) {
             arr[k] = leftTmpArray[i];
-            i++;
+            ++i;
         }
         else {
             arr[k] = rightTmpArray[j];
-            j++;
+            ++j;
         }
-        k++;
+        ++k;
     }
 
     while (i < leftLength) {
         arr[k] = leftTmpArray[i];
-        i++;
-        k++;
+        ++i;
+        ++k;
     }
 
     while (j < rightLength) {
         arr[k] = rightTmpArray[j];
-        j++;
-        k++;
+        ++j;
+        ++k;
     }
 
     free(leftTmpArray);
@@ -82,7 +82,7 @@ void mergeInPlace(double * arr, int left, int middle, int right) {
 
     while (left <= middle && start2 <= right) {
         if (arr[left] <= arr[start2]) {
-            left++;
+            ++left;
         }
         else {
             double value = arr[start2];
@@ -90,13 +90,13 @@ void mergeInPlace(double * arr, int left, int middle, int right) {
 
             while (index > left && arr[index - 1] > value) {
                 arr[index] = arr[index - 1];
-                index--;
+                --index;
             }
             arr[index] = value;
 
-            left++;
-            middle++;
-            start2++;
+            ++left;
+            ++middle;
+            ++start2;
         }
     }
 }
