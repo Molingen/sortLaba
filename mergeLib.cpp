@@ -65,13 +65,6 @@ void mergeSort(double * arr, int left, int right) {
 
 
 
-// void mergeSortWrapper(double *arr, int n) {
-//     int left = 0, right = n - 1;
-//     mergeSort(arr, left, right);
-// }
-
-
-
 void mergeInPlace(double * arr, int left, int middle, int right) {
 
     int start2 = middle + 1;

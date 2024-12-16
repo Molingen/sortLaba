@@ -19,8 +19,7 @@ void (*arrayFuncs[NumOrder])(double*, int) = {
 void (*sortFuncs[NumSortFuncs])(double*, int) = {
     bubbleSort,
     insertSort,
-    selectionSort,
-    // mergeSortWrapper
+    selectionSort
 };
 
 void (*sortFuncsMQ[NumSortFuncsMQ])(double*, int, int) = {
@@ -35,8 +34,6 @@ const char * sortFuncNames[NumSortFuncs] = {
     "Bubble Sort",
     "Insertion Sort",
     "Selection Sort",
-    // "MergeSort"
-    // тут враппер у мержа (с враппером дольше)
 };
 
 const char * sortFuncNamesMQ[NumSortFuncsMQ] = {
@@ -48,7 +45,7 @@ const char * sortFuncNamesMQ[NumSortFuncsMQ] = {
 
 int main() {
 
-    int n = 100000;
+    int n = 50000;
 
     printf("array lenght is %d\n", n);
 
@@ -59,12 +56,17 @@ int main() {
         }
     }
 
+    n = 100000;
+    printf("array lenght is %d\n", n);
+
     for (int i = 0; i < NumSortFuncsMQ; i++) {
         printf("Testing sort function - %s:\n", sortFuncNamesMQ[i]);
         for (int j = 0; j < NumOrder; j++) {
-            test(sortFuncsMQ[i  ], n, static_cast<Order>(j));
+            test(sortFuncsMQ[i], n, static_cast<Order>(j));
         }
     }
+
+
 
     return 0;
 }
