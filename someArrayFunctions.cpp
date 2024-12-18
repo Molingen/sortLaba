@@ -12,6 +12,12 @@ void printArr(double * arr, int n) {
     printf("\n");
 }
 
+void printArr(int * arr, int n) {
+    for (int i = 0; i != n; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
 
 
 void generateRandomArr(double * arr, int n) {
@@ -23,17 +29,40 @@ void generateRandomArr(double * arr, int n) {
     }
 }
 
+void generateRandomArr(int *arr, int n) {
+
+    srandom(time(NULL));
+
+    for (int i = 0; i != n; ++i) {
+        arr[i] =  random() % 100000 + 1;
+    }
+}
 
 
 void generateDirectArr(double * arr, int n) {
+    srandom(time(NULL));
+
+    for (int i = 0; i < n; i++) {
+        arr[i] = i + static_cast<double>(random()) / RAND_MAX;
+    }
+}
+
+void generateDirectArr(int * arr, int n) {
     for (int i = 0; i < n; i++) {
         arr[i] = i;
     }
 }
 
 
-
 void generateInverseArr(double * arr, int n) {
+    srandom(time(NULL));
+
+    for (int i = 0; i < n; i++) {
+        arr[i] = n - i - 1 + static_cast<double>(random()) / RAND_MAX;
+    }
+}
+
+void generateInverseArr(int * arr, int n) {
     for (int i = 0; i < n; i++) {
         arr[i] = n - i - 1;
     }

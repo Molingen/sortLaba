@@ -1,75 +1,61 @@
 #include <complex.h>
-#include <stdio.h>
+#include <string.h>
 
 #include "sortingLib.h"
-#include "someArrayFunctions.h"
 #include "testFuntions.h"
 #include "mergeLib.h"
+#include "line.h"
+#include "someArrayFunctions.h"
 
 
-
-// массив указателей на функции создания массивов
-void (*arrayFuncs[NumOrder])(double*, int) = {
-    generateDirectArr,
-    generateInverseArr,
-    generateRandomArr
-};
-
-// массивы указателей на функции сортировки
-void (*sortFuncs[NumSortFuncs])(double*, int) = {
-    bubbleSort,
-    insertSort,
-    selectionSort
-};
-
-void (*sortFuncsMQ[NumSortFuncsMQ])(double*, int, int) = {
-    mergeSort,
-    mergeSortInPlace,
-    quickSortL,
-    quickSortH
-};
-
-// массивы строк-названий функций сортировок
-const char * sortFuncNames[NumSortFuncs] = {
-    "Bubble Sort",
-    "Insertion Sort",
-    "Selection Sort",
-};
-
-const char * sortFuncNamesMQ[NumSortFuncsMQ] = {
-    "Merge Sort",
-    "Merge Sort in-place",
-    "Quick Lomuto",
-    "Quick Hoara"
-};
-
-int main() {
-
-    int n = 50000;
-
-    printf("array lenght is %d\n", n);
-
-    for (int i = 0; i < NumSortFuncs; i++) {
-        printf("Testing sort function - %s:\n", sortFuncNames[i]);
-        for (int j = 0; j < NumOrder; j++) {
-            test(sortFuncs[i], n, static_cast<Order>(j));
-        }
+int main(int args, char ** argv) {
+    if (args != 4) {
+        printf("Wrong number of arguments \n");
+        return -1;
     }
 
-    n = 100000;
-    printf("array lenght is %d\n", n);
+    int n = atoi(argv[2]);
+    int i = atoi(argv[3]);
 
-    for (int i = 0; i < NumSortFuncsMQ; i++) {
-        printf("Testing sort function - %s:\n", sortFuncNamesMQ[i]);
-        for (int j = 0; j < NumOrder; j++) {
-            test(sortFuncsMQ[i], n, static_cast<Order>(j));
-        }
+    if (i > 2) {
+        printf("Wrong number of Order: 0 - Direct, 1 - Iverse, 2 - Random \n");
+        return -1;
     }
 
-
+    if (strcmp(argv[1], "bubble") == 0) {
+        test(bubbleSort, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "insert") == 0) {
+        test(insertSort, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "select") == 0) {
+        test(selectionSort, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "quickL") == 0) {
+        test(quickSortL, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "quickH") == 0) {
+        test(quickSortH, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "merge") == 0) {
+        test(mergeSort, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "mergeIP") == 0) {
+        test(mergeSortInPlace, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "counting") == 0) {
+            test(countingSort, n, static_cast<Order>(i));
+            return 0;
+    }
 
     return 0;
 }
-
 
 

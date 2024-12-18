@@ -63,18 +63,37 @@ void selectionSort(double * arr, int n) {
 
 
 
-int partitionLomuto(double * arr, int low, int high) {
-    double pivot = arr[high];
-    int i = low - 1;
+void shellSort(double * arr, int n) {
+    for (int gap = n/2; gap > 0; gap /= 2) {
+        for (int i = gap; i != n; ++i) {
 
-    for (int j = low; j != high; ++j) {
+            double temp = arr[i];
+
+            int j = i;
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+
+            arr[j] = temp;
+        }
+    }
+}
+
+
+
+int partitionLomuto(double * arr, int left, int right) {
+    double pivot = arr[right];
+    int i = left - 1;
+
+    for (int j = left; j != right; ++j) {
         if (arr[j] <= pivot) {
             i++;
             swap(&arr[i], &arr[j]);
         }
     }
 
-    swap(&arr[i + 1], &arr[high]);
+    swap(&arr[i + 1], &arr[right]);
 
     return i + 1;
 }
