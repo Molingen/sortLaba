@@ -5,7 +5,7 @@
 #include "testFuntions.h"
 #include "mergeLib.h"
 #include "line.h"
-#include "someArrayFunctions.h"
+
 
 
 int main(int args, char ** argv) {
@@ -51,8 +51,12 @@ int main(int args, char ** argv) {
         return 0;
     }
     if (strcmp(argv[1], "counting") == 0) {
-            test(countingSort, n, static_cast<Order>(i));
-            return 0;
+        test(countingSort, n, static_cast<Order>(i));
+        return 0;
+    }
+    if (strcmp(argv[1], "shell") == 0) {
+        test(shellSort, n, static_cast<Order>(i));
+        return 0;
     }
 
     return 0;

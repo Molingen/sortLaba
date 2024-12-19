@@ -9,7 +9,7 @@
 
 void test(void (*sortFunc)(double*, int), int n, Order order) {
 
-    double* arr = static_cast<double*>(malloc(n * sizeof(double)));
+    auto * arr = static_cast<double*>(malloc(n * sizeof(double)));
 
     switch (order) {
         case Direct: {
@@ -20,9 +20,8 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Inverse: {
@@ -33,9 +32,8 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a reverse sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Random: {
@@ -46,9 +44,8 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in an array of random numbers is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         default:
@@ -60,7 +57,7 @@ void test(void (*sortFunc)(double*, int), int n, Order order) {
 
 void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
-    double* arr = static_cast<double*>(malloc(n * sizeof(double)));
+    auto * arr = static_cast<double*>(malloc(n * sizeof(double)));
 
     switch (order) {
         case Direct: {
@@ -72,9 +69,8 @@ void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Inverse: {
@@ -86,9 +82,8 @@ void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a reverse sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Random: {
@@ -100,9 +95,8 @@ void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in an array of random numbers is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         default:
@@ -114,7 +108,7 @@ void test(void(*sortFunc)(double*, int, int), int n, Order order) {
 
 void test(void (*sortFunc)(int*, int), int n, Order order) {
 
-    int * arr = static_cast<int*>(malloc(n * sizeof(int)));
+    auto * arr = static_cast<int*>(malloc(n * sizeof(int)));
 
     switch (order) {
         case Direct: {
@@ -125,9 +119,8 @@ void test(void (*sortFunc)(int*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Inverse: {
@@ -138,9 +131,8 @@ void test(void (*sortFunc)(int*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in a reverse sorted array is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         case Random: {
@@ -151,9 +143,8 @@ void test(void (*sortFunc)(int*, int), int n, Order order) {
 
             const clock_t end = clock();
 
-            double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
-            printf("The sorting time in an array of random numbers is %.5lf seconds\n", timeSpent);
-            // printArr(arr, n);
+            const double timeSpent = static_cast<double>(end - start)/CLOCKS_PER_SEC;
+            printf("%.5lf", timeSpent);
             break;
         }
         default:

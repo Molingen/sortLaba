@@ -1,5 +1,8 @@
 #include <stdlib.h>
+#include<bits/stdc++.h>
+
 #include "mergeLib.h"
+#include "sortingLib.h"
 
 
 
@@ -65,32 +68,23 @@ void mergeSort(double * arr, int left, int right) {
 
 
 
-void mergeInPlace(double * arr, int left, int middle, int right) {
+void mergeInPlace(double * arr, int start, int middle, int end) {
+    int len = end - start + 1;
 
-    int start2 = middle + 1;
+    int h = ceil(len / 2.0);
 
-    if (arr[middle] <= arr[start2]) {
-        return;
-    }
-
-    while (left <= middle && start2 <= right) {
-        if (arr[left] <= arr[start2]) {
-            ++left;
-        }
-        else {
-            double value = arr[start2];
-            int index = start2;
-
-            while (index > left && arr[index - 1] > value) {
-                arr[index] = arr[index - 1];
-                --index;
+    while(h >= 1) {
+        int idx = start;
+        while(idx + h <= end) {
+            if(arr[idx] > arr[idx + h]) {
+                swap(&arr[idx], &arr[idx + h]);
             }
-            arr[index] = value;
-
-            ++left;
-            ++middle;
-            ++start2;
+            ++idx;
         }
+        if(h == 1) {
+            break;
+        }
+        h = ceil(h / 2.0);
     }
 }
 
@@ -107,4 +101,5 @@ void mergeSortInPlace(double * arr, int left, int right) {
         mergeInPlace(arr, left, middle, right);
     }
 }
+
 
