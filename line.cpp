@@ -1,5 +1,7 @@
 #include "line.h"
+#include <string.h>
 #include <stdlib.h>
+#include <limits.h>
 
 
 void countingSort(int* arr, int size) {

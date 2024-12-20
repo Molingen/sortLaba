@@ -2,8 +2,8 @@ import csv
 import os
 import subprocess
 
-sort_algorithm_n_log = ['quickL', 'quickH', 'merge', 'mergeIP']
 
+sort_algorithm_n = ['counting']
 path = os.path.expanduser('~/CLionProjects/asd/cmake-build-release/asd')
 
 if not os.path.isfile(path):
@@ -12,19 +12,19 @@ else:
 
     order = '2' # 0-dir 1-inv 2-rand
 
-    for i in sort_algorithm_n_log:
-        with open(f'sortingFiles/nLogSorts/{i}.csv', mode='w', newline='') as file:
+    for i in sort_algorithm_n:
+        with open(f'sortingFiles/lineSorts/{i}.csv', mode='w', newline='') as file:
             writer = csv.writer(file, delimiter=';')
             writer.writerow(['n', 'Output'])
-
-            for n in range(0,15000001, 250000):
+            counter = 1
+            for n in range(0,400000001, 10000000):
+                print(counter)
                 result = subprocess.run([path, i, str(n), order], capture_output=True, text=True)
-                writer.writerow([n/10000, result.stdout])
+                writer.writerow([n/10000000, result.stdout])
+                counter += 1
 
-
-
+    # sort_algorithm_n_log = ['quickL', 'quickH', 'merge', 'mergeIP']
     # sort_algorithm_n2 = ['bubble', 'insert', 'select', 'shell']
-    # sort_algorithm_n = ['counting']
 
     # for i in sort_algorithm_n_log:
     #     print(i)

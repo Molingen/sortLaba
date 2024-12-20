@@ -7,7 +7,6 @@
 #include "line.h"
 
 
-
 int main(int args, char ** argv) {
     if (args != 4) {
         printf("Wrong number of arguments \n");
@@ -58,7 +57,6 @@ int main(int args, char ** argv) {
         test(shellSort, n, static_cast<Order>(i));
         return 0;
     }
-
     return 0;
 }
 

@@ -4,3 +4,6 @@ CMakeLists.txt
 .idea
 sortingFiles/n2Sorts
 sortingFiles/nLogSorts
+sortingFiles/lineSorts
+graph.py
+main.py
